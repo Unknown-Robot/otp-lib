@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "lib": [
+            "ESNext",
+            "DOM"
+        ],
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "isolatedModules": true,
+        "baseUrl": ".",
+        "paths": {},
+        "types": [],
+        "typeRoots": [
+            "./node_modules/@types"
+        ],
+        "declaration": true,
+        "declarationMap": false,
+        "declarationDir": "./dist",
+        "emitDeclarationOnly": false,
+        "verbatimModuleSyntax": true,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "removeComments": false,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "skipLibCheck": false,
+        "noEmit": true
+    },
+    "exclude": ["node_modules", "coverage", "dist", "**/*.test.ts"],
+}
