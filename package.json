@@ -4,8 +4,8 @@
 	"description": "The root of OTP package",
 	"private": true,
 	"scripts": {
-		"build": "npm run build --workspaces --if-present",
-		"test": "npm run test --workspaces --if-present"
+		"build": "turbo run build",
+		"test": "turbo run test"
 	},
 	"keywords": [
 		"Multi-Factor Authentication",
@@ -37,5 +37,9 @@
 	"license": "MIT",
 	"workspaces": [
 		"packages/*"
-	]
+	],
+	"packageManager": "npm@11.6.2",
+	"devDependencies": {
+		"turbo": "^2.6.1"
+	}
 }
