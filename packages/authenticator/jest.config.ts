@@ -1,0 +1,20 @@
+import type { Config } from "jest";
+
+const config: Config = {
+    coveragePathIgnorePatterns: ["./node_modules/", "./dist/"],
+    moduleFileExtensions: ["ts", "js"],
+    testMatch: ["./**/*.test.ts"],
+    testEnvironment: "node",
+    collectCoverageFrom: [
+        "src/**/*.ts",
+        "!**/node_modules/**",
+        "!**/dist/*",
+        "!**/test/*"
+    ],
+    collectCoverage: true,
+    preset: "ts-jest",
+    verbose: true,
+    cache: false
+}
+
+export default config;

@@ -1,0 +1,14 @@
+# NodeJS dependencies
+node_modules/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# TypeScript build
+dist/
+
+# Jest coverage
+coverage/
+
+# Turbo cache
+.turbo

@@ -1,0 +1,67 @@
+{
+	"name": "@otp-lib/authenticator",
+	"version": "0.0.1",
+	"description": "The authenticator of OTP package",
+	"typings": "./dist/index.d.ts",
+	"module": "./dist/index.mjs",
+	"main": "./dist/index.js",
+	"exports": {
+		".": {
+			"types": {
+				"import": "./dist/index.d.mts",
+				"require": "./dist/index.d.ts",
+				"default": "./dist/index.d.ts"
+			},
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.js",
+			"default": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"build": "tsup --tsconfig tsconfig.json",
+		"test": "jest --config=jest.config.ts"
+	},
+	"keywords": [
+		"Multi-Factor Authentication",
+		"Two-Factor Authentication",
+		"Google Authenticator",
+		"Yubico Authenticator",
+		"RFC4226",
+		"RFC6238",
+		"HOTP",
+		"TOTP",
+		"OTP",
+		"MFA",
+		"2FA"
+	],
+	"author": {
+		"name": "Unknown-Robot",
+		"email": "mr.unknown.robot@gmail.com",
+		"url": "https://github.com/Unknown-Robot"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Unknown-Robot/otp-lib.git"
+	},
+	"homepage": "https://github.com/Unknown-Robot/otp-lib#readme",
+	"bugs": {
+		"url": "https://github.com/Unknown-Robot/otp-lib/issues",
+		"email": "mr.unknown.robot@gmail.com"
+	},
+	"license": "MIT",
+	"peerDependencies": {
+		"@otp-lib/core": "^0.0.1"
+	},
+	"devDependencies": {
+		"@otp-lib/core": "^0.0.1",
+		"@types/node": "^24.10.1",
+		"terser": "^5.44.1",
+		"jest": "^30.2.0",
+		"ts-jest": "^29.4.5",
+		"tsup": "^8.5.0",
+		"typescript": "^5.9.3"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
