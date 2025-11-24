@@ -6,7 +6,7 @@
 
 ## About
 
-`@otp-lib/core` is lightweight, zero-dependency, and isomorphic TypeScript library for generating and verifying **One-Time Passwords (OTP)**.<br/>
+`@otp-lib/core` is lightweight, zero-dependency, and isomorphic TypeScript library for generating and verifying **One-Time Passwords (OTP)**.<br/><br/>
 Built on top of the native **Web Crypto API**, it ensures cryptographic security and performance across all modern JavaScript environments (Node.js, Browsers, Deno, Bun, Cloudflare Workers).<br/>
 
 It provides strict implementations of the following IETF standards:
@@ -14,28 +14,61 @@ It provides strict implementations of the following IETF standards:
 * **[RFC 6238](https://tools.ietf.org/html/rfc6238) :** Time-Based One-Time Password (TOTP).
 * **[RFC 4648](https://tools.ietf.org/html/rfc4648) :** Base32 and Base64 Data Encodings.
 
-## ✨ Features
+## Features
 
-* **🔒 Secure:** Uses the native **Web Crypto API** (`crypto.subtle`) for cryptographic operations.
-* **💎 Zero Dependencies:** No external bloat. Lightweight and fast.
-* **🌍 Isomorphic:** Works in **Node.js** (18+), **Browsers**, **Bun**, **Deno**, and **Cloudflare Workers**.
-* **🛡️ Type-Safe:** Written in strict TypeScript with full type definitions included.
-* **📦 Comprehensive:**
-    * **Secret Management:** Robust immutable class for handling secrets (Base32, Hex, Base64...).
-    * **TOTP:** Custom periods, algorithms (SHA-1, SHA-256, SHA-512), and flexible validation windows.
-    * **HOTP:** Strict look-ahead window support for resynchronization.
+* **Secure:** Uses the native **Web Crypto API** (`crypto.subtle`) for cryptographic operations.
+* **Isomorphic:** Works in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
+* **Type-Safe:** Written in strict **TypeScript** with full type definitions included.
+* **Zero Dependencies:** No external **overhead**. Lightweight and fast.
 
-## 📦 Installation
+## Install
+
+### Node.js
 
 ```bash
 npm install @otp-lib/core
-# or
-yarn add @otp-lib/core
-# or
-pnpm add @otp-lib/core
 ```
 
-## 🚀 Quick Start
+### Bun
+
+```bash
+bun add @otp-lib/core
+```
+
+### Deno
+
+```bash
+deno install npm:@otp-lib/core
+```
+
+### Browser (ESM)
+
+For modern browsers, you can import the ECMAScript Module (ESM) directly from unpkg.
+
+```html
+<script type="module">
+  import { Secret } from "https://unpkg.com/@otp-lib/core/dist/otp-core.min.mjs";
+
+  const secret = Secret.create();
+  console.log(secret.toBase32());
+</script>
+```
+
+### Browser (UMD)
+
+For legacy usage without a bundler, you can use the minified script from unpkg.
+
+```html
+<script src="https://unpkg.com/@otp-lib/core/dist/otp-core.min.js"></script>
+
+<script>
+  const secret = OTPCore.Secret.create();
+  console.log(secret.toBase32());
+</script>
+```
+
+
+## Quick Start
 
 ### Secret Management
 The Secret class is the entry point. It is immutable and handles secure encoding/decoding of keys.
@@ -48,8 +81,8 @@ import { Secret } from "@otp-lib/core";
 // Generate a random cryptographically secure secret (20 bytes)
 const secret = Secret.create();
 
-// OR import from an existing string (e.g., from your database)
-const secretFromDb = Secret.fromBase32("JBSWY3DPEHPK3PXP");
+// OR import from an existing string (e.g., from your configuration)
+const secretFromBase32 = Secret.fromBase32("JBSWY3DPEHPK3PXP");
 const secretFromHex = Secret.fromHex("48656c6c6f21deadbeef");
 
 // Export for storage or display
@@ -59,7 +92,7 @@ console.log(secret.toHex());    // "4865..."
 
 ### HOTP (HMAC-Based OTP)
 
-Implements the event-based algorithm where codes are generated from an **incrementing counter**.
+Implements the HMAC-Based algorithm where codes are generated from an **incrementing counter**.
 
 ```typescript
 import { HOTP, Secret } from "@otp-lib/core";
@@ -87,7 +120,7 @@ if(delta !== null) {
 
 ### TOTP (Time-Based OTP)
 
-Implements the time-based algorithm where codes are generated based on the **current system time**.
+Implements the Time-Based algorithm where codes are generated based on the **current system time**.
 
 ```typescript
 import { TOTP, Secret } from "@otp-lib/core";
@@ -104,7 +137,7 @@ console.log(token); // e.g. "123456"
 const isValid = await totp.verify("123456");
 ```
 
-## 📚 References
+## References
 
 ### OTP Options (IOTPOptions)
 
@@ -118,7 +151,7 @@ const isValid = await totp.verify("123456");
 
 ### HOTP Options (IHOTPOptions)
 
-> Extends **Common Options**.
+> Extends **OTP Options**.
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
@@ -127,13 +160,13 @@ const isValid = await totp.verify("123456");
 
 ### TOTP Options (ITOTPOptions)
 
-> Extends **Common Options**.
+> Extends **OTP Options**.
 
 | Option | Type | Default | Description |
 | ------ | ---- | ------- | ----------- |
-| window | number \| [number, number] | [0, 0] | The validation window to tolerate clock drift or latency.<br>• **Number :** Symmetric window (e.g., `1` = ±1 step).<br>• **Tuple :** `[past, future]` steps (e.g., `[1, 0]` allows 1 step back, 0 forward). |
+| window | number \|<br/> [number, number] | [0, 0] | The validation window to tolerate clock drift or latency.<br>• **Number :** Symmetric window (e.g., `1` = ±1 step).<br>• **Tuple :** `[past, future]` steps (e.g., `[1, 0]` allows 1 step back, 0 forward). |
 | period | number | 30 | The time step in seconds. |
 
-## 📄 License
+## License
 
 MIT © [Unknown-Robot](https://github.com/Unknown-Robot)
