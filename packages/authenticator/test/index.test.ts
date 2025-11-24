@@ -9,7 +9,15 @@ describe("Entry Point", () => {
         expect(Library.Authenticator).toBeDefined();
     });
 
+    test("Should re-export classes", () => {
+        expect(Library.Secret).toBeDefined();
+    });
+
     test("Should export enum", () => {
         expect(Library.AuthenticatorType).toBeDefined();
+    });
+
+    test("Should re-export enum", () => {
+        expect(Library.HashAlgorithms).toBeDefined();
     });
 });
