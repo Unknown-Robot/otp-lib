@@ -2,9 +2,9 @@
 	"name": "@otp-lib/core",
 	"version": "0.0.1",
 	"description": "The core of OTP package",
-	"typings": "./dist/index.d.ts",
-	"module": "./dist/index.mjs",
-	"main": "./dist/index.js",
+	"typings": "./dist/otp-core.d.ts",
+	"module": "./dist/otp-core.mjs",
+	"main": "./dist/otp-core.cjs",
 	"files": [
 		"dist"
 	],
@@ -16,18 +16,18 @@
 				"default": "./dist/utils/index.d.ts"
 			},
 			"import": "./dist/utils/index.mjs",
-			"require": "./dist/utils/index.js",
-			"default": "./dist/utils/index.js"
+			"require": "./dist/utils/index.cjs",
+			"default": "./dist/utils/index.cjs"
 		},
 		".": {
 			"types": {
-				"import": "./dist/index.d.mts",
-				"require": "./dist/index.d.ts",
-				"default": "./dist/index.d.ts"
+				"import": "./dist/otp-core.d.mts",
+				"require": "./dist/otp-core.d.ts",
+				"default": "./dist/otp-core.d.ts"
 			},
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.js",
-			"default": "./dist/index.js"
+			"import": "./dist/otp-core.mjs",
+			"require": "./dist/otp-core.cjs",
+			"default": "./dist/otp-core.cjs"
 		}
 	},
 	"scripts": {

@@ -9,8 +9,12 @@ const banner: string = `/**
  */`;
 
 export default defineConfig([{
-    entry: ["src/index.ts", "src/utils/index.ts"],
-    format: ["cjs", "esm"],
+    entry: {
+        "otp-core": "src/index.ts",
+        "utils/index": "src/utils/index.ts"
+    },
+    format: ["cjs", "esm", "iife"],
+    globalName: "OTPCore",
     treeshake: "smallest",
     splitting: false,
     sourcemap: true,
@@ -25,37 +29,19 @@ export default defineConfig([{
             comments: false,
             beautify: true
         }
-    }
-}, {
-    globalName: "OTPAuth",
-    entry: {
-        "otp-auth": "src/index.ts", 
     },
-    format: ["iife"],
-    treeshake: "smallest",
-    splitting: false,
-    sourcemap: true,
-    clean: true,
-    dts: false,
-    minify: "terser",
-    terserOptions: {
-        compress: false,
-        mangle: false,
-        format: {
-            preamble: banner,
-            comments: false,
-            beautify: true
-        }
-    },
-    outExtension: () => ({
-        js: ".js"
+    outExtension: ({ format }) => ({
+        js: (format === "cjs")? ".cjs": 
+            (format === "esm")? ".mjs": 
+            ".js"
     })
 }, {
-    globalName: "OTPAuth",
     entry: {
-        "otp-auth": "src/index.ts", 
+        "otp-core": "src/index.ts",
+        "utils/index": "src/utils/index.ts"
     },
-    format: ["iife"],
+    format: ["cjs", "esm", "iife"],
+    globalName: "OTPCore",
     treeshake: "smallest",
     splitting: false,
     sourcemap: true,
@@ -63,15 +49,17 @@ export default defineConfig([{
     dts: false,
     minify: "terser",
     terserOptions: {
-        compress: false,
-        mangle: false,
+        compress: true,
+        mangle: true,
         format: {
             preamble: banner,
             comments: false,
             beautify: false
         }
     },
-    outExtension: () => ({
-        js: ".min.js"
+    outExtension: ({ format }) => ({
+        js: (format === "cjs")? ".min.cjs": 
+            (format === "esm")? ".min.mjs": 
+            ".min.js"
     })
 }]);
