@@ -67,7 +67,6 @@ For legacy usage without a bundler, you can use the minified script from unpkg.
 </script>
 ```
 
-
 ## Quick Start
 
 ### Secret Management
@@ -139,7 +138,7 @@ const isValid = await totp.verify("123456");
 
 ## References
 
-### OTP Options (IOTPOptions)
+### OTP Options
 
 > `HOTP` and `TOTP` accept the following OTP options.
 
@@ -149,7 +148,7 @@ const isValid = await totp.verify("123456");
 | digits | number | 6 | The length of the generated code. |
 | secret | Secret | Secret.create() | The shared secret key instance. |
 
-### HOTP Options (IHOTPOptions)
+### HOTP Options
 
 > Extends **OTP Options**.
 
@@ -158,7 +157,7 @@ const isValid = await totp.verify("123456");
 | lookAhead | number | 0 | The number of future codes to check during validation (Resynchronization window). |
 | counter | number | 0 | The initial counter value. |
 
-### TOTP Options (ITOTPOptions)
+### TOTP Options
 
 > Extends **OTP Options**.
 
