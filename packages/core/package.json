@@ -1,6 +1,6 @@
 {
 	"name": "@otp-lib/core",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "The core of OTP package",
 	"typings": "./dist/otp-core.d.ts",
 	"module": "./dist/otp-core.mjs",
