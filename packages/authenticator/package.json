@@ -2,22 +2,22 @@
 	"name": "@otp-lib/authenticator",
 	"version": "0.0.1",
 	"description": "The authenticator of OTP package",
-	"typings": "./dist/index.d.ts",
-	"module": "./dist/index.mjs",
-	"main": "./dist/index.js",
+	"typings": "./dist/otp-auth.d.ts",
+	"module": "./dist/otp-auth.mjs",
+	"main": "./dist/otp-auth.cjs",
 	"files": [
 		"dist"
 	],
 	"exports": {
 		".": {
 			"types": {
-				"import": "./dist/index.d.mts",
-				"require": "./dist/index.d.ts",
-				"default": "./dist/index.d.ts"
+				"import": "./dist/otp-auth.d.mts",
+				"require": "./dist/otp-auth.d.ts",
+				"default": "./dist/otp-auth.d.ts"
 			},
-			"import": "./dist/index.mjs",
-			"require": "./dist/index.js",
-			"default": "./dist/index.js"
+			"import": "./dist/otp-auth.mjs",
+			"require": "./dist/otp-auth.cjs",
+			"default": "./dist/otp-auth.cjs"
 		}
 	},
 	"scripts": {
