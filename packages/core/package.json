@@ -54,9 +54,10 @@
 	},
 	"repository": {
 		"type": "git",
+		"directory": "packages/core",
 		"url": "https://github.com/Unknown-Robot/otp-lib.git"
 	},
-	"homepage": "https://github.com/Unknown-Robot/otp-lib#readme",
+	"homepage": "https://github.com/Unknown-Robot/otp-lib/tree/main/packages/core#readme",
 	"bugs": {
 		"url": "https://github.com/Unknown-Robot/otp-lib/issues",
 		"email": "mr.unknown.robot@gmail.com"
