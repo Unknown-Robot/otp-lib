@@ -4,8 +4,8 @@ import pkg from "./package.json";
 const banner: string = `/**
  * ${pkg.name} v${pkg.version}
  * Copyright (c) ${new Date().getFullYear()} ${pkg.author.name || pkg.author}
- * Licensed under ${pkg.license} License
  * ${pkg.homepage || pkg.repository.url}
+ * ${pkg.license} License
  */`;
 
 export default defineConfig([{
@@ -13,8 +13,7 @@ export default defineConfig([{
         "otp-core": "src/index.ts",
         "utils/index": "src/utils/index.ts"
     },
-    format: ["cjs", "esm", "iife"],
-    globalName: "OTPCore",
+    format: ["cjs", "esm"],
     treeshake: "smallest",
     splitting: false,
     sourcemap: true,
@@ -37,10 +36,35 @@ export default defineConfig([{
     })
 }, {
     entry: {
-        "otp-core": "src/index.ts",
-        "utils/index": "src/utils/index.ts"
+        "otp-core": "src/index.ts"
     },
-    format: ["cjs", "esm", "iife"],
+    format: ["esm", "iife"],
+    noExternal: [],
+    globalName: "OTPCore",
+    treeshake: "smallest",
+    splitting: false,
+    sourcemap: true,
+    clean: true,
+    dts: false,
+    minify: "terser",
+    terserOptions: {
+        compress: false,
+        mangle: false,
+        format: {
+            preamble: banner,
+            comments: false,
+            beautify: true
+        }
+    },
+    outExtension: ({ format }) => ({
+        js: `.${format}.js`
+    })
+}, {
+    entry: {
+        "otp-core": "src/index.ts"
+    },
+    format: ["esm", "iife"],
+    noExternal: [],
     globalName: "OTPCore",
     treeshake: "smallest",
     splitting: false,
@@ -58,8 +82,6 @@ export default defineConfig([{
         }
     },
     outExtension: ({ format }) => ({
-        js: (format === "cjs")? ".min.cjs": 
-            (format === "esm")? ".min.mjs": 
-            ".min.js"
+        js: `.${format}.min.js`
     })
 }]);

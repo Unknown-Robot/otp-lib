@@ -47,7 +47,7 @@ For modern browsers, you can import the ECMAScript Module (ESM) directly from un
 
 ```html
 <script type="module">
-  import { Secret } from "https://unpkg.com/@otp-lib/core/dist/otp-core.min.mjs";
+  import { Secret } from "https://unpkg.com/@otp-lib/core/dist/otp-core.esm.min.js";
 
   const secret = Secret.create();
   console.log(secret.toBase32());
@@ -59,7 +59,7 @@ For modern browsers, you can import the ECMAScript Module (ESM) directly from un
 For legacy usage without a bundler, you can use the minified script from unpkg.
 
 ```html
-<script src="https://unpkg.com/@otp-lib/core/dist/otp-core.min.js"></script>
+<script src="https://unpkg.com/@otp-lib/core/dist/otp-core.iife.min.js"></script>
 
 <script>
   const secret = OTPCore.Secret.create();
