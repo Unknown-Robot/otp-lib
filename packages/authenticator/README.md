@@ -17,7 +17,7 @@ It wraps the core logic with **Account Context** (Issuers, Account Names) and en
 * **URI Parsing:** Robust parsing of `otpauth://` URIs (QR Codes), handling edge cases like URL-encoding, legacy formats, and non-standard labels.
 * **URI Generation:** Generates standard-compliant URIs ready for QR Code generation, ensuring compatibility with all major authenticator apps.
 * **Context Management:** Associates cryptographic secrets with an **Issuer** (Provider Name) and an **Account** (User Identifier).
-* **Isomorphic:** Works seamlessly in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
+* **Isomorphic:** Works in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
 * **Type-Safe:** Strict TypeScript definitions for configuration options and validation at runtime.
 
 ## Install
@@ -46,7 +46,7 @@ For modern browsers, you can import the ECMAScript Module (ESM) directly from un
 
 ```html
 <script type="module">
-  import { Secret } from "https://unpkg.com/@otp-lib/authenticator/dist/otp-auth.min.mjs";
+  import { Secret } from "https://unpkg.com/@otp-lib/authenticator/dist/otp-auth.esm.min.js";
 
   const secret = Secret.create();
   console.log(secret.toBase32());
@@ -58,7 +58,7 @@ For modern browsers, you can import the ECMAScript Module (ESM) directly from un
 For legacy usage without a bundler, you can use the minified script from unpkg.
 
 ```html
-<script src="https://unpkg.com/@otp-lib/authenticator/dist/otp-auth.min.js"></script>
+<script src="https://unpkg.com/@otp-lib/authenticator/dist/otp-auth.iife.min.js"></script>
 
 <script>
   const secret = OTPAuth.Secret.create();
