@@ -22,7 +22,7 @@
 	},
 	"scripts": {
 		"build": "tsup --tsconfig tsconfig.json",
-		"test": "jest --config=jest.config.ts"
+		"test": "jest --config=jest.config.json"
 	},
 	"keywords": [
 		"Multi-Factor Authentication",
