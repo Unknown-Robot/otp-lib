@@ -56,15 +56,22 @@ class OTP {
      * @memberof OTP
      */
     constructor(options: IOTPOptions = {}) {
-        const { algorithm = HashAlgorithms.SHA1, secret = Secret.create(), digits = 6 } = options;
+        if(!TypeGuard.isPlainObject(options)) {
+            throw(new Error("The options must be a plain object"));
+        }
 
+        const algorithm = options.algorithm ?? HashAlgorithms.SHA1;
         if(!TypeGuard.isEnum(algorithm, HashAlgorithms)) {
             throw(new Error(`The options.algorithm "${algorithm}" is not supported`));
         }
-        else if(!(secret instanceof Secret)) {
+
+        const secret = options.secret ?? Secret.create();
+        if(!(secret instanceof Secret)) {
             throw(new Error("The options.secret must be a instance of Secret class"));
         }
-        else if(!TypeGuard.isPositiveInteger(digits)) {
+        
+        const digits = options.digits ?? 6;
+        if(!TypeGuard.isPositiveInteger(digits)) {
             throw(new Error("The options.digits must be a positive integer"));
         }
 

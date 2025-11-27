@@ -48,6 +48,15 @@ describe("One-Time Password", () => {
             expect(otp.getDigits()).toBe(options.digits);
         });
 
+        describe("Should throw if options is not a plain object", () => {
+            const invalidOptions = [null, 123, "string", [], new Date()];
+
+            test.each(invalidOptions)(`Should throw if options is "%s"`, (option) => {
+                /* @ts-expect-error */
+                expect(() => new TestOTP(option)).toThrow("The options must be a plain object");
+            });
+        });
+
         test("Should throw if algorithm is not supported", () => {
             /* @ts-expect-error */
             expect(() => new TestOTP({ algorithm: "MD5" })).toThrow();
