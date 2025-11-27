@@ -37,6 +37,10 @@ describe("Secret", () => {
             /* @ts-expect-error */
             expect(() => Secret.fromBytes("bytes")).toThrow();
         });
+
+        test("Should throw if bytes is empty", () => {
+            expect(() => Secret.fromBytes(new Uint8Array())).toThrow();
+        });
     });
 
     describe("Immutability", () => {

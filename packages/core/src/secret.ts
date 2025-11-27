@@ -38,6 +38,9 @@ class Secret {
         if(!(bytes instanceof Uint8Array)) {
             throw(new Error("The bytes must be a instance of Uint8Array class"));
         }
+        else if(!bytes.byteLength) {
+            throw(new Error("The bytes must not be empty"));
+        }
 
         this.bytes = new Uint8Array(bytes);
     }
