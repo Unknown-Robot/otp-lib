@@ -55,6 +55,15 @@ describe("Time-Based One-Time Password", () => {
             expect(totp.getWindow()).toStrictEqual([3, 3]);
         });
 
+        describe("Should throw if options is not a plain object", () => {
+            const invalidOptions = [null, 123, "string", [], new Date()];
+
+            test.each(invalidOptions)(`Should throw if options is "%s"`, (option) => {
+                /* @ts-expect-error */
+                expect(() => new TOTP(option)).toThrow("The options must be a plain object");
+            });
+        });
+
         test("Should throw if window is not non-negative integer", () => {
             expect(() => new TOTP({ window: -9 })).toThrow();
             expect(() => new TOTP({ window: 0.5 })).toThrow();

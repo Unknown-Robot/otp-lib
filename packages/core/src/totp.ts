@@ -38,17 +38,19 @@ class TOTP extends OTP {
      * @memberof TOTP
      */
     constructor(options: ITOTPOptions = {}) {
-        const { window = [0, 0], period = 30 } = options;
+        super(options);
 
+        const window = options.window ?? [0, 0];
         if((!TypeGuard.isArrayOf(window, TypeGuard.isNonNegativeInteger) || window.length !== 2)
         && !TypeGuard.isNonNegativeInteger(window)) {
             throw(new Error("The options.window must be a non-negative integer or an array of two non-negative integers"));
         }
-        else if(!TypeGuard.isPositiveInteger(period)) {
+        
+        const period = options.period ?? 30;
+        if(!TypeGuard.isPositiveInteger(period)) {
             throw(new Error("The options.period must be a positive integer"));
         }
 
-        super(options);
         this.window = (!TypeGuard.isArray(window))? [window, window] : window;
         this.period = period;
     }
