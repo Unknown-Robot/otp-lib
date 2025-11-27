@@ -38,16 +38,18 @@ class HOTP extends OTP {
      * @memberof HOTP
      */
     constructor(options: IHOTPOptions = {}) {
-        const { lookAhead = 0, counter = 0 } = options;
+        super(options);
 
+        const lookAhead = options.lookAhead ?? 0;
         if(!TypeGuard.isNonNegativeInteger(lookAhead)) {
             throw(new Error("The options.lookAhead must be non-negative integer"));
         }
-        else if(!TypeGuard.isNonNegativeInteger(counter)) {
+        
+        const counter = options.counter ?? 0;
+        if(!TypeGuard.isNonNegativeInteger(counter)) {
             throw(new Error("The options.counter must be non-negative integer"));
         }
 
-        super(options);
         this.lookAhead = lookAhead;
         this.counter = counter;
     }

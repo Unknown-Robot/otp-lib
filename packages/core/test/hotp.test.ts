@@ -35,6 +35,15 @@ describe("HMAC-Based One-Time Password", () => {
             expect(hotp.getCounter()).toBe(options.counter);
         });
 
+        describe("Should throw if options is not a plain object", () => {
+            const invalidOptions = [null, 123, "string", [], new Date()];
+
+            test.each(invalidOptions)(`Should throw if options is "%s"`, (option) => {
+                /* @ts-expect-error */
+                expect(() => new HOTP(option)).toThrow("The options must be a plain object");
+            });
+        });
+
         test("Should throw if counter is not non-negative integer", () => {
             expect(() => new HOTP({ counter: 0.5 })).toThrow();
             expect(() => new HOTP({ counter: -9 })).toThrow();
