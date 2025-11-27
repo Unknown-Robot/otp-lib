@@ -93,6 +93,28 @@ describe("Type Guard", () => {
         });
     });
 
+    describe("isPlainObject", () => {
+        test("Should return true for plain objects", () => {
+            expect(TypeGuard.isPlainObject({})).toBe(true);
+            expect(TypeGuard.isPlainObject({ key: "value" })).toBe(true);
+            expect(TypeGuard.isPlainObject(new Object())).toBe(true);
+        });
+
+        test("Should return false for non-plain objects", () => {
+            expect(TypeGuard.isPlainObject(null)).toBe(false);
+            expect(TypeGuard.isPlainObject([])).toBe(false);
+            expect(TypeGuard.isPlainObject(new Date())).toBe(false);
+            expect(TypeGuard.isPlainObject(/regex/)).toBe(false);
+        });
+
+        test("Should return false for primitives", () => {
+            expect(TypeGuard.isPlainObject("string")).toBe(false);
+            expect(TypeGuard.isPlainObject(123)).toBe(false);
+            expect(TypeGuard.isPlainObject(true)).toBe(false);
+            expect(TypeGuard.isPlainObject(undefined)).toBe(false);
+        });
+    });
+
     describe("isNonNegativeInteger", () => {
         test("Should return true for zero", () => {
             expect(TypeGuard.isNonNegativeInteger(0)).toBe(true);

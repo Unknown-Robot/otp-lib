@@ -47,6 +47,19 @@ class TypeGuard {
     }
 
     /**
+     * Check type guard if value is plain object
+     * 
+     * @static
+     * @param {unknown} value The value to check is plain object
+     * @return {value is object}
+     * @memberof TypeGuard
+     */
+    public static isPlainObject(value: unknown): value is object {
+        return typeof(value) === "object" && value !== null
+            && Object.getPrototypeOf(value) === Object.prototype;
+    }
+
+    /**
      * Check type guard if value is array
      *
      * @static
