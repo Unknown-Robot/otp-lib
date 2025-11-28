@@ -1,24 +1,26 @@
 # @otp-lib/authenticator
 
-> High-level API for managing OTP accounts and parsing/generating `otpauth://` URIs (Google Authenticator compatible).
+> TOTP (Time-based) and HOTP (HMAC-based) One-Time Password library
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm](https://img.shields.io/npm/v/@otp-lib/authenticator.svg)](https://www.npmjs.com/package/@otp-lib/authenticator)
 
 ## About
 
-`@otp-lib/authenticator` is the high-level companion to [`@otp-lib/core`](https://www.npmjs.com/package/@otp-lib/core).
+`@otp-lib/authenticator` is designed to build **Multi-Factor Authentication (MFA)**, **Two-Factor Authentication (2FA)** systems or **Authenticator** applications.
 
-While the **Core** library handles raw cryptographic operations (HMAC, Key encoding, Byte manipulation), this package provides a **user-friendly Facade** designed for 2FA implementation.
-
-It wraps the core logic with **Account Context** (Issuers, Account Names) and ensuring full compatibility with the **Key URI Format** `otpauth://` used by apps like Google Authenticator, Authy, Microsoft Authenticator, or Yubico Authenticator.
+It wraps the [`otp-lib/core`](https://www.npmjs.com/package/@otp-lib/core) logic with **Account Context** (Issuers, Account Names) and ensuring full compatibility with the **Key URI Format** `otpauth://` used by apps like Google Authenticator, Authy, Microsoft Authenticator, or Yubico Authenticator.
 
 ## Features
 
-* **URI Parsing:** Robust parsing of `otpauth://` URIs (QR Codes), handling edge cases like URL-encoding, legacy formats, and non-standard labels.
-* **URI Generation:** Generates standard-compliant URIs ready for QR Code generation, ensuring compatibility with all major authenticator apps.
-* **Context Management:** Associates cryptographic secrets with an **Issuer** (Provider Name) and an **Account** (User Identifier).
-* **Isomorphic:** Works in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
-* **Type-Safe:** Strict TypeScript definitions for configuration options and validation at runtime.
+* **Secure :** Uses the native **Web Crypto API** (`crypto.subtle`) for cryptographic operations.
+* **Isomorphic :** Works in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
+* **Type-Safe :** Written in strict **TypeScript** with full type definitions included.
+* **Zero Dependencies :** No external **overhead**. Lightweight and fast.
+* **Compliant :** Strict implementations of the IETF standards :
+    * **[RFC 4226](https://tools.ietf.org/html/rfc4226) :** HMAC-Based One-Time Password (HOTP).
+    * **[RFC 6238](https://tools.ietf.org/html/rfc6238) :** Time-Based One-Time Password (TOTP).
+    * **[RFC 4648](https://tools.ietf.org/html/rfc4648) :** Base32 and Base64 Data Encodings.
 
 ## Install
 
