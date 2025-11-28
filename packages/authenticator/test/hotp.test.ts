@@ -32,6 +32,15 @@ describe("HMAC-Based One-Time Password Authenticator", () => {
             expect(hotp.getAccount()).toBe(options.account);
             expect(hotp.getIssuer()).toBe(options.issuer);
         });
+
+        describe("Should throw if options is not a plain object", () => {
+            const invalidOptions = [null, 123, "string", [], new Date()];
+
+            test.each(invalidOptions)(`Should throw if options is "%s"`, (option) => {
+                /* @ts-expect-error */
+                expect(() => new HOTPAuthenticator(option)).toThrow("The options must be a plain object");
+            });
+        });
     });
 
     describe("Proxy methods", () => {

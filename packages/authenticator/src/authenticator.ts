@@ -50,12 +50,17 @@ class Authenticator<TCore extends OTP, TOptions extends IOTPOptions> {
      * @memberof Authenticator
      */
     constructor(otp: TCore, options: TAuthenticatorOptions<TOptions>) {
-        const { account, issuer = null } = options;
+        if(!TypeGuard.isPlainObject(options)) {
+            throw(new Error("The options must be a plain object"));
+        }
 
+        const account = options.account;
         if(!TypeGuard.isString(account)) {
             throw(new Error("The options.account must be a string"));
         }
-        else if(issuer !== null && !TypeGuard.isString(issuer)) {
+        
+        const issuer = options.issuer ?? null;
+        if(issuer !== null && !TypeGuard.isString(issuer)) {
             throw(new Error("The options.issuer must be a string or null"));
         }
 

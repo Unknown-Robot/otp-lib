@@ -33,6 +33,15 @@ describe("Time-Based One-Time Password Authenticator", () => {
             expect(totp.getAccount()).toBe(options.account);
             expect(totp.getIssuer()).toBe(options.issuer);
         });
+
+        describe("Should throw if options is not a plain object", () => {
+            const invalidOptions = [null, 123, "string", [], new Date()];
+
+            test.each(invalidOptions)(`Should throw if options is "%s"`, (option) => {
+                /* @ts-expect-error */
+                expect(() => new TOTPAuthenticator(option)).toThrow("The options must be a plain object");
+            });
+        });
     });
 
     describe("Proxy methods", () => {

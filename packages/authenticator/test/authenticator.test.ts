@@ -43,6 +43,15 @@ describe("Authenticator", () => {
             expect(authenticator.getIssuer()).toBe(options.issuer);
         });
 
+        describe("Should throw if options is not a plain object", () => {
+            const invalidOptions = [null, 123, "string", [], new Date()];
+
+            test.each(invalidOptions)(`Should throw if options is "%s"`, (option) => {
+                /* @ts-expect-error */
+                expect(() => new TestAuthenticator(option)).toThrow("The options must be a plain object");
+            });
+        });
+
         test("Should throw if account is not string", () => {
             /* @ts-expect-error */
             expect(() => new TestAuthenticator(otp, { account: 123 })).toThrow();
@@ -183,7 +192,7 @@ describe("Authenticator", () => {
                 new URL(`otpauth://hotp/`)
             ];
 
-            test.each(invalidLabel)(`Should throw invalid label "%s"`, (url) => {                
+            test.each(invalidLabel)(`Should throw invalid label "%s"`, (url) => {
                 expect(() => TestAuthenticator.fromURL(url))
                     .toThrow("The authenticator URI label is invalid");
             });
