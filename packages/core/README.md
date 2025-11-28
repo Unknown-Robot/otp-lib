@@ -3,23 +3,24 @@
 > TOTP (Time-based) and HOTP (HMAC-based) One-Time Password library
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![npm](https://img.shields.io/npm/v/@otp-lib/core.svg)](https://www.npmjs.com/package/@otp-lib/core)
 
 ## About
 
-`@otp-lib/core` is lightweight, zero-dependency, and isomorphic TypeScript library for generating and verifying **One-Time Passwords (OTP)**.<br/><br/>
-Built on top of the native **Web Crypto API**, it ensures cryptographic security and performance across all modern JavaScript environments (Node.js, Browsers, Deno, Bun, Cloudflare Workers).<br/>
+`@otp-lib/core` is designed to build strict, compliant implementation of **One-Time Passwords (OTP)** algorithms.
 
-It provides strict implementations of the following IETF standards:
-* **[RFC 4226](https://tools.ietf.org/html/rfc4226) :** HMAC-Based One-Time Password (HOTP).
-* **[RFC 6238](https://tools.ietf.org/html/rfc6238) :** Time-Based One-Time Password (TOTP).
-* **[RFC 4648](https://tools.ietf.org/html/rfc4648) :** Base32 and Base64 Data Encodings.
+Built on top of the native **Web Crypto API**, it ensures cryptographic security and performance across all modern JavaScript environments (Node.js, Deno, Bun, Browsers, Cloudflare Workers).
 
 ## Features
 
-* **Secure:** Uses the native **Web Crypto API** (`crypto.subtle`) for cryptographic operations.
-* **Isomorphic:** Works in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
-* **Type-Safe:** Written in strict **TypeScript** with full type definitions included.
-* **Zero Dependencies:** No external **overhead**. Lightweight and fast.
+* **Secure :** Uses the native **Web Crypto API** (`crypto.subtle`) for cryptographic operations.
+* **Isomorphic :** Works in **Node.js**, **Bun**, **Deno**, **Browsers**, and **Cloudflare Workers**.
+* **Type-Safe :** Written in strict **TypeScript** with full type definitions included.
+* **Zero Dependencies :** No external **overhead**. Lightweight and fast.
+* **Compliant :** Strict implementations of the IETF standards :
+    * **[RFC 4226](https://tools.ietf.org/html/rfc4226) :** HMAC-Based One-Time Password (HOTP).
+    * **[RFC 6238](https://tools.ietf.org/html/rfc6238) :** Time-Based One-Time Password (TOTP).
+    * **[RFC 4648](https://tools.ietf.org/html/rfc4648) :** Base32 and Base64 Data Encodings.
 
 ## Install
 
@@ -111,7 +112,7 @@ const token = await hotp.generate();
 const delta = await hotp.verifyDelta("123456"); 
 
 if(delta !== null) {
-    // Success! Update your database with the new counter
+	// Success! Update your database with the new counter
     const newCounter = hotp.getCounter() + delta + 1;
     // saveToDb(newCounter);
 }
