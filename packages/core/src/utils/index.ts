@@ -1,1 +1,1 @@
-export { default as Typeguard } from "./typeguard";
+export { default as TypeGuard } from "./typeguard";
