@@ -1,7 +1,7 @@
 {
 	"name": "@otp-lib/root",
 	"version": "0.0.1",
-	"description": "The root of OTP package",
+	"description": "TOTP (Time-based) and HOTP (HMAC-based) One-Time Password library",
 	"private": true,
 	"scripts": {
 		"build": "turbo run build",
