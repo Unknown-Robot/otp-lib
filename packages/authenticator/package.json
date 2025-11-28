@@ -1,7 +1,7 @@
 {
 	"name": "@otp-lib/authenticator",
 	"version": "0.0.2",
-	"description": "The authenticator of OTP package",
+	"description": "TOTP (Time-based) and HOTP (HMAC-based) One-Time Password library",
 	"typings": "./dist/otp-auth.d.ts",
 	"module": "./dist/otp-auth.mjs",
 	"main": "./dist/otp-auth.cjs",
@@ -67,7 +67,6 @@
 		"typescript": "^5.9.3"
 	},
 	"publishConfig": {
-		"provenance": true,
 		"access": "public"
 	}
 }
