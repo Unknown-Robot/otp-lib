@@ -4,6 +4,6 @@ import * as Library from "../../src/utils";
 
 describe("Export Utils", () => {
     test("Should export classes", () => {
-        expect(Library.Typeguard).toBeDefined();
+        expect(Library.TypeGuard).toBeDefined();
     });
 });
