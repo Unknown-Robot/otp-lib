@@ -5,7 +5,7 @@ import { AuthenticatorType } from "./enum/type";
 
 import Authenticator from "./authenticator";
 
-import { Typeguard } from "@otp-lib/core/utils";
+import { TypeGuard } from "@otp-lib/core/utils";
 import { HOTP } from "@otp-lib/core";
 
 /**
@@ -108,7 +108,7 @@ class HOTPAuthenticator extends Authenticator<HOTP, IHOTPOptions> {
         const counter = url.searchParams.get("counter");
         if(counter !== null) {
             const value = parseInt(counter, 10);
-            if(!Typeguard.isPositiveInteger(value)) {
+            if(!TypeGuard.isPositiveInteger(value)) {
                 throw(new Error("The authenticator URI counter is invalid"));
             }
             

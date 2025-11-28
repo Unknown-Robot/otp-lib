@@ -5,7 +5,7 @@ import { AuthenticatorType } from "./enum/type";
 
 import Authenticator from "./authenticator";
 
-import { Typeguard } from "@otp-lib/core/utils";
+import { TypeGuard } from "@otp-lib/core/utils";
 import { TOTP } from "@otp-lib/core";
 
 /**
@@ -128,7 +128,7 @@ class TOTPAuthenticator extends Authenticator<TOTP, ITOTPOptions> {
         const period = url.searchParams.get("period");
         if(period !== null) {
             const value = parseInt(period, 10);
-            if(!Typeguard.isPositiveInteger(value)) {
+            if(!TypeGuard.isPositiveInteger(value)) {
                 throw(new Error("The authenticator URI period is invalid"));
             }
             

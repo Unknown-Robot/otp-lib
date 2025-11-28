@@ -2,7 +2,7 @@ import type { TAuthenticatorOptions } from "./types/authenticator";
 import type { IOTPOptions } from "@otp-lib/core";
 
 import { OTP, Secret, HashAlgorithms } from "@otp-lib/core";
-import { Typeguard } from "@otp-lib/core/utils";
+import { TypeGuard } from "@otp-lib/core/utils";
 
 import { AuthenticatorType } from "./enum/type";
 
@@ -52,10 +52,10 @@ class Authenticator<TCore extends OTP, TOptions extends IOTPOptions> {
     constructor(otp: TCore, options: TAuthenticatorOptions<TOptions>) {
         const { account, issuer = null } = options;
 
-        if(!Typeguard.isString(account)) {
+        if(!TypeGuard.isString(account)) {
             throw(new Error("The options.account must be a string"));
         }
-        else if(issuer !== null && !Typeguard.isString(issuer)) {
+        else if(issuer !== null && !TypeGuard.isString(issuer)) {
             throw(new Error("The options.issuer must be a string or null"));
         }
 
@@ -127,7 +127,7 @@ class Authenticator<TCore extends OTP, TOptions extends IOTPOptions> {
         if(!url.protocol.startsWith("otpauth")) {
             throw(new Error("The authenticator URI protocol is invalid"));
         }
-        else if(!Typeguard.isEnum(url.host, AuthenticatorType)) {
+        else if(!TypeGuard.isEnum(url.host, AuthenticatorType)) {
             throw(new Error("The authenticator URI type is invalid"));
         }
 
@@ -163,7 +163,7 @@ class Authenticator<TCore extends OTP, TOptions extends IOTPOptions> {
         const algorithm = url.searchParams.get("algorithm");
         if(algorithm !== null) {
             const value = algorithm.toUpperCase();
-            if(!Typeguard.isKeyOf(value, HashAlgorithms)) {
+            if(!TypeGuard.isKeyOf(value, HashAlgorithms)) {
                 throw(new Error("The authenticator URI algorithm is not supported"));
             }
 
@@ -173,7 +173,7 @@ class Authenticator<TCore extends OTP, TOptions extends IOTPOptions> {
         const digits = url.searchParams.get("digits");
         if(digits !== null) {
             const value = parseInt(digits, 10);
-            if(!Typeguard.isPositiveInteger(value)) {
+            if(!TypeGuard.isPositiveInteger(value)) {
                 throw(new Error("The authenticator URI digits is invalid"));
             }
             
