@@ -1,6 +1,6 @@
-import type { IOTPOptions } from "./types/otp";
+import { HashAlgorithms, KeySizes } from "./enum/hash";
 
-import { HashAlgorithms } from "./enum/hash";
+import type { IOTPOptions } from "./types/otp";
 
 import TypeGuard from "./utils/typeguard";
 
@@ -65,7 +65,7 @@ class OTP {
             throw(new Error(`The options.algorithm "${algorithm}" is not supported`));
         }
 
-        const secret = options.secret ?? Secret.create();
+        const secret = options.secret ?? Secret.create(KeySizes[algorithm]);
         if(!(secret instanceof Secret)) {
             throw(new Error("The options.secret must be a instance of Secret class"));
         }

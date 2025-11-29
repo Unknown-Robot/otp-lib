@@ -48,6 +48,32 @@ describe("One-Time Password", () => {
             expect(otp.getDigits()).toBe(options.digits);
         });
 
+        describe("Should generate recommended key size for hash algorithms", () => {
+            test("Should generate 20 bytes secret for SHA-1", () => {
+                const otp = new TestOTP({ algorithm: HashAlgorithms.SHA1 });
+
+                expect(otp.getSecret().toBytes().length).toBe(20);
+            });
+
+            test("Should generate 32 bytes secret for SHA-256", () => {
+                const otp = new TestOTP({ algorithm: HashAlgorithms.SHA256 });
+
+                expect(otp.getSecret().toBytes().length).toBe(32);
+            });
+
+            test("Should generate 48 bytes secret for SHA-384", () => {
+                const otp = new TestOTP({ algorithm: HashAlgorithms.SHA384 });
+                
+                expect(otp.getSecret().toBytes().length).toBe(48);
+            });
+
+            test("Should generate 64 bytes secret for SHA-512", () => {
+                const otp = new TestOTP({ algorithm: HashAlgorithms.SHA512 });
+
+                expect(otp.getSecret().toBytes().length).toBe(64);
+            });
+        });
+
         describe("Should throw if options is not a plain object", () => {
             const invalidOptions = [null, 123, "string", [], new Date()];
 
