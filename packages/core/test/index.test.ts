@@ -12,5 +12,6 @@ describe("Entry Point", () => {
 
     test("Should export enum", () => {
         expect(Library.HashAlgorithms).toBeDefined();
+        expect(Library.KeySizes).toBeDefined();
     });
 });
