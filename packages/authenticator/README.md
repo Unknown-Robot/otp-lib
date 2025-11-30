@@ -2,8 +2,10 @@
 
 > TOTP (Time-based) and HOTP (HMAC-based) One-Time Password library
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Node.js CI](https://github.com/Unknown-Robot/otp-lib/actions/workflows/nodejs.yml/badge.svg)](https://github.com/Unknown-Robot/otp-lib/actions/workflows/nodejs.yml)
+[![codecov](https://codecov.io/github/Unknown-Robot/otp-lib/graph/badge.svg?token=I7U2VPEJ6Q&flag=authenticator)](https://codecov.io/github/Unknown-Robot/otp-lib/tree/main/packages%2Fauthenticator%2Fsrc)
 [![npm](https://img.shields.io/npm/v/@otp-lib/authenticator.svg)](https://www.npmjs.com/package/@otp-lib/authenticator)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## About
 
