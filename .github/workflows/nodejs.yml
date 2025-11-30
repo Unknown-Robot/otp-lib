@@ -36,7 +36,7 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: ./packages/core/coverage/clover.xml
-          flag: core
+          flags: core
           fail_ci_if_error: true
           use_oidc: true
 
@@ -44,6 +44,6 @@ jobs:
         uses: codecov/codecov-action@v5
         with:
           files: ./packages/authenticator/coverage/clover.xml
-          flag: authenticator
+          flags: authenticator
           fail_ci_if_error: true
           use_oidc: true
