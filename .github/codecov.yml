@@ -1,0 +1,34 @@
+codecov:
+  require_ci_to_pass: yes
+  branch: main
+
+coverage:
+  status:
+    project:
+      default:
+        target: 100%
+      
+      core:
+        target: 100%
+        flags: 
+          - core
+      authenticator:
+        target: 100%
+        flags: 
+          - authenticator
+
+    patch:
+      default:
+        target: auto
+
+flag_management:
+  default_rules:
+    carryforward: true
+
+flags:
+  core:
+    paths:
+      - packages/core/
+  authenticator:
+    paths:
+      - packages/authenticator/
