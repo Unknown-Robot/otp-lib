@@ -32,8 +32,18 @@ jobs:
       - name: Run tests
         run: npm run test
 
-      - name: Upload coverage to Codecov
+      - name: Upload packages/core coverage
         uses: codecov/codecov-action@v5
         with:
+          files: ./packages/core/coverage/clover.xml
+          flag: core
+          fail_ci_if_error: true
+          use_oidc: true
+
+      - name: Upload packages/authenticator coverage
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./packages/authenticator/coverage/clover.xml
+          flag: authenticator
           fail_ci_if_error: true
           use_oidc: true
