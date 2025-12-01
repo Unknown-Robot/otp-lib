@@ -1,6 +1,6 @@
 {
 	"name": "@otp-lib/core",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"description": "TOTP (Time-based) and HOTP (HMAC-based) One-Time Password library",
 	"typings": "./dist/otp-core.d.ts",
 	"module": "./dist/otp-core.mjs",
