@@ -54,10 +54,10 @@
 	},
 	"license": "MIT",
 	"peerDependencies": {
-		"@otp-lib/core": "^0.1.0"
+		"@otp-lib/core": "^0.2.0"
 	},
 	"devDependencies": {
-		"@otp-lib/core": "^0.1.0",
+		"@otp-lib/core": "^0.2.0",
 		"@types/node": "^24.10.1",
 		"jest": "^30.2.0",
 		"terser": "^5.44.1",
