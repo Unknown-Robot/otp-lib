@@ -4,6 +4,8 @@ export { default as TOTP } from "./totp";
 
 export * from "./enum/type";
 
+export type * from "./types/authenticator";
+
 export {
     Secret,
     HashAlgorithms,
